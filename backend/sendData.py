@@ -15,7 +15,7 @@ output = input
 
 def cropRec(lst):
     loadModule = pickle.load(open(
-        'c:/Users/ASUS/Desktop/Major project/backend/CropModels/crDtClassifier.pkl', 'rb'))
+        'CropModels/crDtClassifier.pkl', 'rb'))
     x = loadModule.predict([lst])
     return str(x[0])
 
