@@ -9,7 +9,7 @@ const test = [20, 59, 60, 28, 70.3, 7.0, 150.9];
 console.log("data send to python: ", JSON.stringify(test));
 
 const python_process = spawner("python", [
-  "../../backend/sendData.py",
+  "./dataCrop.py",
   JSON.stringify(test),
 ]);
 
