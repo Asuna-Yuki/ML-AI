@@ -8,13 +8,13 @@ import Loader from "./Loader";
 
 export const Crop = () => {
   const [formData, setFormData] = useState({
-    temp: "",
-    rainfall: "",
-    humidity: "",
-    pH: "",
-    phosphorus: "",
-    potassium: "",
-    nitrogen: "",
+    temp: "1",
+    rainfall: "1",
+    humidity: "1",
+    pH: "1",
+    phosphorus: "1",
+    potassium: "1",
+    nitrogen: "1",
   });
   const [buttonPopup, setButtonPopup] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -73,81 +73,83 @@ export const Crop = () => {
   return (
     <>
       <div className='form-container'>
-        <h1>CROP</h1>
-        <h1>RECOMMENDATION</h1>
-        <DropDown onClick={ddOnClick} />
-        <form onSubmit={(e) => onSubmit(e)}>
-          <label htmlFor='nitrogen'>Nitrogen</label>
-          <input
-            type='number'
-            placeholder='0'
-            name='nitrogen'
-            value={nitrogen}
-            onChange={(e) => onChange(e)}
-          />
+        <div className='form-container-background'>
+          <h1>CROP</h1>
+          <h1>RECOMMENDATION</h1>
+          <DropDown onClick={ddOnClick} />
+          <form onSubmit={(e) => onSubmit(e)}>
+            <label htmlFor='nitrogen'>Nitrogen</label>
+            <input
+              type='number'
+              placeholder='0'
+              name='nitrogen'
+              value={nitrogen}
+              onChange={(e) => onChange(e)}
+            />
 
-          <label htmlFor='phosphorus'>Phosphorus</label>
-          <input
-            type='number'
-            name='phosphorus'
-            value={phosphorus}
-            onChange={(e) => onChange(e)}
-          />
+            <label htmlFor='phosphorus'>Phosphorus</label>
+            <input
+              type='number'
+              name='phosphorus'
+              value={phosphorus}
+              onChange={(e) => onChange(e)}
+            />
 
-          <label htmlFor='potassium'>Potassium</label>
-          <input
-            type='number'
-            name='potassium'
-            value={potassium}
-            onChange={(e) => onChange(e)}
-          />
+            <label htmlFor='potassium'>Potassium</label>
+            <input
+              type='number'
+              name='potassium'
+              value={potassium}
+              onChange={(e) => onChange(e)}
+            />
 
-          {/* phosphorus */}
-          <label htmlFor='temp'>Temperature</label>
-          <input
-            type='number'
-            name='temp'
-            value={temp}
-            onChange={(e) => onChange(e)}
-          />
+            {/* phosphorus */}
+            <label htmlFor='temp'>Temperature</label>
+            <input
+              type='number'
+              name='temp'
+              value={temp}
+              onChange={(e) => onChange(e)}
+            />
 
-          {/*  pota*/}
-          <label htmlFor='humidity'>Humidity</label>
-          <input
-            type='number'
-            name='humidity'
-            value={humidity}
-            onChange={(e) => onChange(e)}
-          />
-          <label htmlFor='pH'>pH</label>
-          <input
-            type='number'
-            name='pH'
-            value={pH}
-            onChange={(e) => onChange(e)}
-          />
-          {/* nitro */}
-          <label htmlFor='rainfall'>Rainfall</label>
-          <input
-            type='number'
-            name='rainfall'
-            value={rainfall}
-            onChange={(e) => onChange(e)}
-          />
-          <Link to='/' className='btn btn-continue'>
-            Back
-          </Link>
-          <button className='btn btn-continue'>Submit</button>
-        </form>
-        {loading === true ? (
-          <Loader></Loader>
-        ) : (
-          <PopUp
-            trigger={buttonPopup}
-            setTrigger={setButtonPopup}
-            setAns={ans}
-          ></PopUp>
-        )}
+            {/*  pota*/}
+            <label htmlFor='humidity'>Humidity</label>
+            <input
+              type='number'
+              name='humidity'
+              value={humidity}
+              onChange={(e) => onChange(e)}
+            />
+            <label htmlFor='pH'>pH</label>
+            <input
+              type='number'
+              name='pH'
+              value={pH}
+              onChange={(e) => onChange(e)}
+            />
+            {/* nitro */}
+            <label htmlFor='rainfall'>Rainfall</label>
+            <input
+              type='number'
+              name='rainfall'
+              value={rainfall}
+              onChange={(e) => onChange(e)}
+            />
+            <Link to='/' className='btn btn-continue'>
+              Back
+            </Link>
+            <button className='btn btn-continue'>Submit</button>
+          </form>
+          {loading === true ? (
+            <Loader></Loader>
+          ) : (
+            <PopUp
+              trigger={buttonPopup}
+              setTrigger={setButtonPopup}
+              setAns={ans}
+            ></PopUp>
+          )}
+        </div>
       </div>
     </>
   );

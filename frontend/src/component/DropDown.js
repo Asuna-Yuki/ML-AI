@@ -12,7 +12,7 @@ const Dropdown = (props) => {
   return (
     <select onChange={handleSelect}>
       {states.map((state) => (
-        <option key={state.name} value={JSON.stringify(state)}>
+        <option key={state.id} value={JSON.stringify(state)}>
           {state.name}
         </option>
       ))}
