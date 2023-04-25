@@ -63,7 +63,6 @@ export const Crop = () => {
 
       if (response !== null) {
         setLoading(false);
-        console.log(loading);
       }
     } catch (error) {
       console.error(error);
@@ -147,6 +146,7 @@ export const Crop = () => {
               trigger={buttonPopup}
               setTrigger={setButtonPopup}
               setAns={ans}
+              text={"We recommend you to grow "}
             ></PopUp>
           )}
         </div>

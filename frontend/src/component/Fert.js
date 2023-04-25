@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import DropDown from "./DropDown";
 import { Form } from "./Form";
+import Loader from "./Loader";
+import { PopUp } from "./PopUp";
 
 export const Fert = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +15,11 @@ export const Fert = () => {
     potassium: "1",
     nitrogen: "1",
   });
+  const [buttonPopup, setButtonPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [ans, setAns] = useState("");
 
-  const { temp, moisture, humidity, pH, phosphorus, potassium, nitrogen } =
+  const { temp, moisture, humidity, phosphorus, potassium, nitrogen } =
     formData;
 
   const ddOnClick = (e) => {
@@ -43,11 +48,21 @@ export const Fert = () => {
 
     console.log(fertData);
 
+    setLoading(true);
+    setButtonPopup(true);
+
     try {
       const data = { data: fertData };
       const response = await axios.post("/api/fert", data);
-      console.log(response.data);
-      alert(response.data);
+      // console.log(response.data);
+      // alert(response.data);
+
+      setAns(response.data);
+
+      if (response !== null) {
+        setLoading(false);
+        console.log(loading);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -123,6 +138,16 @@ export const Fert = () => {
           </Link>
           <button className='btn btn-continue'>Submit</button>
         </form>
+        {loading === true ? (
+          <Loader></Loader>
+        ) : (
+          <PopUp
+            trigger={buttonPopup}
+            setTrigger={setButtonPopup}
+            setAns={ans}
+            text={"We recommend the following "}
+          ></PopUp>
+        )}
       </div>
     </>
   );
