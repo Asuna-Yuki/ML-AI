@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import DropDown from "./DropDown";
 import states from "../dropDownData";
+import { PopUp } from "./PopUp";
+import Loader from "./Loader";
 
 export const Crop = () => {
   const [formData, setFormData] = useState({
@@ -14,9 +16,14 @@ export const Crop = () => {
     potassium: "",
     nitrogen: "",
   });
+  const [buttonPopup, setButtonPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [ans, setAns] = useState("");
 
   const { temp, rainfall, humidity, pH, phosphorus, potassium, nitrogen } =
     formData;
+
+  const cropData = [];
 
   const ddOnClick = (e) => {
     const data = JSON.parse(e);
@@ -35,7 +42,6 @@ export const Crop = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const cropData = [];
     cropData[0] = parseFloat(nitrogen);
     cropData[1] = parseFloat(phosphorus);
     cropData[2] = parseFloat(potassium);
@@ -44,13 +50,21 @@ export const Crop = () => {
     cropData[5] = parseFloat(pH);
     cropData[6] = parseFloat(rainfall);
 
-    console.log(cropData);
+    // console.log(cropData);
+    setLoading(true);
+    setButtonPopup(true);
 
     try {
       const data = { data: cropData };
       const response = await axios.post("/api/data", data);
-      console.log(response.data);
-      alert(response.data);
+      // console.log(response.data);
+      // alert(response.data);
+      setAns(response.data);
+
+      if (response !== null) {
+        setLoading(false);
+        console.log(loading);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -62,7 +76,6 @@ export const Crop = () => {
         <h1>CROP</h1>
         <h1>RECOMMENDATION</h1>
         <DropDown onClick={ddOnClick} />
-
         <form onSubmit={(e) => onSubmit(e)}>
           <label htmlFor='nitrogen'>Nitrogen</label>
           <input
@@ -126,6 +139,15 @@ export const Crop = () => {
           </Link>
           <button className='btn btn-continue'>Submit</button>
         </form>
+        {loading === true ? (
+          <Loader></Loader>
+        ) : (
+          <PopUp
+            trigger={buttonPopup}
+            setTrigger={setButtonPopup}
+            setAns={ans}
+          ></PopUp>
+        )}
       </div>
     </>
   );

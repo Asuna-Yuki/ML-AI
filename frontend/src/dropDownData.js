@@ -1,7 +1,7 @@
 const states = [
   {
     id: "0",
-    name: "--------",
+    name: "Select a state",
     pH: "1",
     phosphorus: "1",
     potassium: "1",
