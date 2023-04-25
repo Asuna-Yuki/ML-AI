@@ -6,16 +6,15 @@ import { Form } from "./Form";
 
 export const Fert = () => {
   const [formData, setFormData] = useState({
-    temp: "",
-    rainfall: "",
-    humidity: "",
-    pH: "",
-    phosphorus: "",
-    potassium: "",
-    nitrogen: "",
+    temp: "1",
+    moisture: "1",
+    humidity: "1",
+    phosphorus: "1",
+    potassium: "1",
+    nitrogen: "1",
   });
 
-  const { temp, rainfall, humidity, pH, phosphorus, potassium, nitrogen } =
+  const { temp, moisture, humidity, pH, phosphorus, potassium, nitrogen } =
     formData;
 
   const ddOnClick = (e) => {
@@ -23,7 +22,6 @@ export const Fert = () => {
 
     setFormData({
       ...formData,
-      pH: data.pH,
       phosphorus: data.phosphorus,
       potassium: data.potassium,
       nitrogen: data.nitrogen,
@@ -36,13 +34,12 @@ export const Fert = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const fertData = [];
-    fertData[0] = parseFloat(nitrogen);
-    fertData[1] = parseFloat(phosphorus);
-    fertData[2] = parseFloat(potassium);
-    fertData[3] = parseFloat(temp);
-    fertData[4] = parseFloat(humidity);
-    fertData[5] = parseFloat(pH);
-    // fertData[6] = parseFloat(rainfall);
+    fertData[0] = parseFloat(temp);
+    fertData[1] = parseFloat(humidity);
+    fertData[2] = parseFloat(moisture);
+    fertData[3] = parseFloat(nitrogen);
+    fertData[4] = parseFloat(potassium);
+    fertData[5] = parseFloat(phosphorus);
 
     console.log(fertData);
 
@@ -106,21 +103,21 @@ export const Fert = () => {
             value={humidity}
             onChange={(e) => onChange(e)}
           />
-          <label htmlFor='pH'>pH</label>
+          <label htmlFor='moisture'>Moisture</label>
           <input
             type='number'
-            name='pH'
-            value={pH}
+            name='moisture'
+            value={moisture}
             onChange={(e) => onChange(e)}
           />
           {/* nitro */}
-          <label htmlFor='rainfall'>Rainfall</label>
+          {/* <label htmlFor='rainfall'>Rainfall</label>
           <input
             type='number'
             name='rainfall'
             value={rainfall}
             onChange={(e) => onChange(e)}
-          />
+          /> */}
           <Link to='/' className='btn btn-continue'>
             Back
           </Link>
