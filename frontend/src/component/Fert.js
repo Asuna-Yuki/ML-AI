@@ -8,12 +8,12 @@ import { PopUp } from "./PopUp";
 
 export const Fert = () => {
   const [formData, setFormData] = useState({
-    temp: "1",
-    moisture: "1",
-    humidity: "1",
-    phosphorus: "1",
-    potassium: "1",
-    nitrogen: "1",
+    temp: "26",
+    moisture: "30",
+    humidity: "52",
+    phosphorus: "30",
+    potassium: "15",
+    nitrogen: "37",
   });
   const [buttonPopup, setButtonPopup] = useState(false);
   const [loading, setLoading] = useState(false);

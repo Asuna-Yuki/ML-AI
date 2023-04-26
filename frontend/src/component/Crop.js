@@ -8,13 +8,13 @@ import Loader from "./Loader";
 
 export const Crop = () => {
   const [formData, setFormData] = useState({
-    temp: "1",
-    rainfall: "1",
-    humidity: "1",
-    pH: "1",
-    phosphorus: "1",
-    potassium: "1",
-    nitrogen: "1",
+    temp: "28",
+    rainfall: "150.9",
+    humidity: "70.3",
+    pH: "7",
+    phosphorus: "59",
+    potassium: "60",
+    nitrogen: "20",
   });
   const [buttonPopup, setButtonPopup] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -84,6 +84,7 @@ export const Crop = () => {
               name='nitrogen'
               value={nitrogen}
               onChange={(e) => onChange(e)}
+              required
             />
 
             <label htmlFor='phosphorus'>Phosphorus</label>
@@ -92,6 +93,7 @@ export const Crop = () => {
               name='phosphorus'
               value={phosphorus}
               onChange={(e) => onChange(e)}
+              required
             />
 
             <label htmlFor='potassium'>Potassium</label>
@@ -100,6 +102,7 @@ export const Crop = () => {
               name='potassium'
               value={potassium}
               onChange={(e) => onChange(e)}
+              required
             />
 
             {/* phosphorus */}
@@ -109,6 +112,7 @@ export const Crop = () => {
               name='temp'
               value={temp}
               onChange={(e) => onChange(e)}
+              required
             />
 
             {/*  pota*/}
@@ -118,6 +122,7 @@ export const Crop = () => {
               name='humidity'
               value={humidity}
               onChange={(e) => onChange(e)}
+              required
             />
             <label htmlFor='pH'>pH</label>
             <input
@@ -125,6 +130,7 @@ export const Crop = () => {
               name='pH'
               value={pH}
               onChange={(e) => onChange(e)}
+              required
             />
             {/* nitro */}
             <label htmlFor='rainfall'>Rainfall</label>
@@ -133,6 +139,7 @@ export const Crop = () => {
               name='rainfall'
               value={rainfall}
               onChange={(e) => onChange(e)}
+              required
             />
             <Link to='/' className='btn btn-continue'>
               Back
